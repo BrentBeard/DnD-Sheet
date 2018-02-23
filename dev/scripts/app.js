@@ -43,32 +43,58 @@ class App extends React.Component {
       return (
         <div>
           <form>
-            <label htmlFor="str">Strength</label>
-            <input id="str" type="number" onChange={this.abScore}/>
-            <p>{this.modify(this.state.str)}</p>
+            <div className="abilityScores"> 
+              <label htmlFor="str">Strength</label>
+              <input id="str" type="number" onChange={this.abScore}/>
+              <p>{this.modify(this.state.str)}</p>
+  
+              <label htmlFor="dex">Dexterity</label>
+              <input id="dex" type="number" onChange={this.abScore}/>
+              <p>{this.modify(this.state.dex)}</p>
+  
+              <label htmlFor="con">Constitution</label>
+              <input id="con" type="number" onChange={this.abScore}/>
+              <p>{this.modify(this.state.con)}</p>
+  
+              <label htmlFor="intel">Intelligence</label>
+              <input id="intel" type="number" onChange={this.abScore}/>
+              <p>{this.modify(this.state.intel)}</p>
+  
+              <label htmlFor="wis">Wisdom</label>
+              <input id="wis" type="number" onChange={this.abScore}/>
+              <p>{this.modify(this.state.wis)}</p>
+  
+              <label htmlFor="cha">Charisma</label>
+              <input id="cha" type="number" onChange={this.abScore}/>
+              <p>{this.modify(this.state.cha)}</p>
+            </div>
+            <div className="saveThrows">
+            <h2>Savings Throws</h2>
+              <p><input id="" type="checkbox"/> {this.modify(this.state.str)} Strength</p>
+              <p><input id="" type="checkbox" />  {this.modify(this.state.dex)} Dexterity</p>
+              <p><input id="" type="checkbox" />  {this.modify(this.state.con)} Constitution</p>
+              <p><input id="" type="checkbox" />  {this.modify(this.state.intel)} Intelligence</p>
+              <p><input id="" type="checkbox" />  {this.modify(this.state.wis)} Wisdom</p>
+              <p><input id="" type="checkbox" />  {this.modify(this.state.cha)} Charisma</p>
+            </div>
+            <div>
+              {/* input inside label, vis hidden on input so it keeps its weight style label with border and background when checked */}
+              <h2>Skills</h2>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.dex)}Acrobatics<span>(Dex)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.wis)}Animal Handling<span>(Wis)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.intel)}Arcana<span>(Int)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.str)}Athletics<span>(Str)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.cha)}Deception<span>(Cha)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.intel)}History<span>(Int)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.wis)}Insight<span>(Wis)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.cha)}Intimidation<span>(Cha)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.intel)}Investigation<span>(Int)</span></p>
+              <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.wis)}<span>()</span></p>
+            </div>
 
-            <label htmlFor="dex">Dexterity</label>
-            <input id="dex" type="number" onChange={this.abScore}/>
-            <p>{this.modify(this.state.dex)}</p>
-
-            <label htmlFor="con">Constitution</label>
-            <input id="con" type="number" onChange={this.abScore}/>
-            <p>{this.modify(this.state.con)}</p>
-
-            <label htmlFor="intel">Intelligence</label>
-            <input id="intel" type="number" onChange={this.abScore}/>
-            <p>{this.modify(this.state.intel)}</p>
-
-            <label htmlFor="wis">Wisdom</label>
-            <input id="wis" type="number" onChange={this.abScore}/>
-            <p>{this.modify(this.state.wis)}</p>
-
-            <label htmlFor="cha">Charisma</label>
-            <input id="cha" type="number" onChange={this.abScore}/>
-            <p>{this.modify(this.state.cha)}</p>
           </form>
         </div>
-        
+
       )
     }
 }
