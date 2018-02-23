@@ -70,12 +70,12 @@ class App extends React.Component {
             </div>
             <div className="saveThrows">
             <h2>Savings Throws</h2>
-              <p><input id="" type="checkbox"/> {this.modify(this.state.str)} Strength</p>
-              <p><input id="" type="checkbox" />  {this.modify(this.state.dex)} Dexterity</p>
-              <p><input id="" type="checkbox" />  {this.modify(this.state.con)} Constitution</p>
-              <p><input id="" type="checkbox" />  {this.modify(this.state.intel)} Intelligence</p>
-              <p><input id="" type="checkbox" />  {this.modify(this.state.wis)} Wisdom</p>
-              <p><input id="" type="checkbox" />  {this.modify(this.state.cha)} Charisma</p>
+              <label htmlFor=""><p><input id="" type="checkbox"/></label> {this.modify(this.state.str)} Strength</p>
+              <label htmlFor=""><p><input id="" type="checkbox"/></label>  {this.modify(this.state.dex)} Dexterity</p>
+              <label htmlFor=""><p><input id="" type="checkbox"/></label>  {this.modify(this.state.con)} Constitution</p>
+              <label htmlFor=""><p><input id="" type="checkbox"/></label>  {this.modify(this.state.intel)} Intelligence</p>
+              <label htmlFor=""><p><input id="" type="checkbox"/></label>  {this.modify(this.state.wis)} Wisdom</p>
+              <label htmlFor=""><p><input id="" type="checkbox"/></label>  {this.modify(this.state.cha)} Charisma</p>
             </div>
             <div>
               {/* input inside label, vis hidden on input so it keeps its weight style label with border and background when checked */}
