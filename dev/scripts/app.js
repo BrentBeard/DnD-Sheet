@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Equipment from './equipment.js';
 
 var config = {
   apiKey: "AIzaSyBk3culam82m0j9_ToifzRLFszPs7rOSz8",
@@ -10,8 +11,6 @@ var config = {
   messagingSenderId: "76450565623"
 };
 firebase.initializeApp(config);
-
-
 
 class App extends React.Component {
   constructor() {
@@ -41,7 +40,7 @@ class App extends React.Component {
       }
     render() {
       return (
-        <div>
+        
           <form>
             <div className="abilityScores"> 
               <label htmlFor="str">Strength</label>
@@ -70,12 +69,12 @@ class App extends React.Component {
             </div>
             <div className="saveThrows">
             <h2>Savings Throws</h2>
-              <p><label htmlFor=""><input id="" type="checkbox"/></label> {this.modify(this.state.str)} Strength</p>
-              <p><label htmlFor=""><input id="" type="checkbox"/></label> {this.modify(this.state.dex)} Dexterity</p>
-              <p><label htmlFor=""><input id="" type="checkbox"/></label>  {this.modify(this.state.con)} Constitution</p>
-              <p><label htmlFor=""><input id="" type="checkbox"/></label>  {this.modify(this.state.intel)} Intelligence</p>
+              <p><label htmlFor="strThr"><input id="strThr" type="checkbox"/></label>{this.modify(this.state.str)} Strength</p>
+              <p><label htmlFor="dexThr"><input id="dexThr" type="checkbox"/></label>{this.modify(this.state.dex)} Dexterity</p>
+              <p><label htmlFor="conThr"><input id="conThr" type="checkbox"/></label>{this.modify(this.state.con)} Constitution</p>
+              <p><label htmlFor=""><input id="" type="checkbox"/></label>{this.modify(this.state.intel)} Intelligence</p>
               <p><label htmlFor=""><input id="" type="checkbox"/></label>  {this.modify(this.state.wis)} Wisdom</p>
-              <p><label htmlFor=""><input id="" type="checkbox"/></label>  {this.modify(this.state.cha)} Charisma</p>
+              <p><label htmlFor=""><input id="" type="checkbox"/></label> {this.modify(this.state.cha)} Charisma</p>
             </div>
             <div>
               {/* input inside label, vis hidden on input so it keeps its weight style label with border and background when checked */}
@@ -102,11 +101,13 @@ class App extends React.Component {
             <div>
               <p><label htmlFor=""><input id="" type="checkbox" /></label>{this.modify(this.state.wis)}Passive Wisdom<span>(Perception)</span></p>
             </div>
-
           </form>
-        </div>
-
       )
+      // <Equipment />
+      
+      
+
+        
     }
 }
 
