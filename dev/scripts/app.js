@@ -108,7 +108,7 @@ class App extends React.Component {
             <Equipment />
             <Languages />
             <Background />
-            {/* <Weapons /> */}
+            <Weapons />
           </div>
       
       )

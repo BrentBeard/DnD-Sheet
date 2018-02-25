@@ -13,9 +13,9 @@ class Languages extends React.Component {
     }
     addList(e) {
         e.preventDefault();
-        const listNew = {
-            listItems: this.state.listItem
-        };
+        // const listNew = {
+        //     listItems: this.state.listItem
+        // };
         // console.log(listNew)
         const newState = Array.from(this.state.list);
         newState.push(this.state.listItem);

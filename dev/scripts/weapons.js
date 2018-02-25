@@ -20,9 +20,9 @@ class Weapons extends React.Component {
             atkBonus: this.state.atkBonus,
             dType: this.state.dType
         };
-        // console.log(listNew)
+        console.log(listNew)
         const newState = Array.from(this.state.list);
-        // newState.push(list);
+        newState.push(listNew);
         this.setState({
             list: newState,
             listItem: "",
@@ -55,9 +55,7 @@ class Weapons extends React.Component {
                     {this.state.list.map((listFinal, i) => {
                         return (
                             <li key={i}>
-                                <p>{listFinal.listItems} 
-                                {listFinal.atkBonus} {listFinal.dtype}
-                                </p>
+                                <p><span>{listFinal.listItems}</span><span>{listFinal.atkBonus}</span><span>{listFinal.dType}</span></p>
                             </li>
                         )
                     })}

@@ -33,22 +33,21 @@ class Background extends React.Component {
     render() {
         return (
             <div>
-                <h2>Languages & Proficiencies</h2>
+                <h2>Background</h2>
                 <form onSubmit={this.addList}>
-                    <input type="text" id="listItem"
+                    {/* <input type="text" id="listItem"
                         value={this.state.listItem}
-                        onChange={this.handleChange} />
+                        onChange={this.handleChange} /> */}
+                    <textarea name="text1" id="listItem" cols="40" rows="5" value={this.state.listItem} onChange={this.handleChange}></textarea>
                     <input type="submit" value="submit" />
                 </form>
-                <ul>
+                <div>
                     {this.state.list.map((listFinal, i) => {
                         return (
-                            <li key={i}>
-                                <p>{listFinal}</p>
-                            </li>
+                                <p key={i}>{listFinal}</p>
                         )
                     })}
-                </ul>
+                </div>
             </div>
         )
     }
