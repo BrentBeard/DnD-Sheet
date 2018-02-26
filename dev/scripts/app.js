@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import Equipment from './equipment.js';
 import Languages from './lang.js';
 import Background from './background.js';
-import Weapons from './weapons.js'
+import Weapons from './weapons.js';
+import HealthAndSpeed from './healthAndSpeedBox.js'
 
 var config = {
   apiKey: "AIzaSyBk3culam82m0j9_ToifzRLFszPs7rOSz8",
@@ -106,6 +107,7 @@ class App extends React.Component {
               </div>
             </form>
             <Equipment />
+            <HealthAndSpeed />
             <Languages />
             <Background />
             <Weapons />
