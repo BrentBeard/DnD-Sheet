@@ -9,29 +9,22 @@ class AbilityScores extends React.Component {
             con: 0,
             intel: 0,
             wis: 0,
-            cha: 0
+            cha: 0,
+            list: []
         }
-        console.log(this.state);
         this.abScore = this.abScore.bind(this);
         this.add = this.add.bind(this);
     }
     componentDidMount() {
-        const dbref = firebase.database().ref(`/${this.props.userID}/Languages`);
+        const dbref = firebase.database().ref(`/${this.props.userID}/AbilityScores`);
 
         dbref.on('value', (snapshot) => {
-            // console.log(snapshot.val());
+
             const data = snapshot.val();
             const state = [];
-            // console.log(data);
+
             for (let key in data) {
-                // console.log(data.key);
-                // console.log(data[key]);
-                // Ki ki's key exchange
-                // Here we use the value stored in the key
-                // variable to access the object stored at that location.
-                //Then we add a new property to that object, called key(confusing right?)
-                //And assign it the value of, key.
-                // data[key].key = key;
+
                 state.push(data[key]);
             }
             // console.log(state);
@@ -42,8 +35,6 @@ class AbilityScores extends React.Component {
         });
     }
     abScore(e) {
-        //take number value of input. divide that input by 2 and subtract 5 render that value in the p tag 
-
         this.setState({
             [e.target.id]: e.target.value
         });
@@ -54,38 +45,32 @@ class AbilityScores extends React.Component {
         return modScore
     }
 
-    componentDidMount() {
-        const dbref = firebase.database().ref(`/${this.props.userID}/Ability Scores`);
-
-        dbref.on('value', (snapshot) => {
-            // console.log(snapshot.val());
-            const data = snapshot.val();
-            const state = [];
-            // console.log(data);
-            for (let key in data) {
-                // console.log(data.key);
-                // console.log(data[key]);
-                // Ki ki's key exchange
-                // Here we use the value stored in the key
-                // variable to access the object stored at that location.
-                //Then we add a new property to that object, called key(confusing right?)
-                //And assign it the value of, key.
-                // data[key].key = key;
-                state.push(data[key]);
-            }
-            // console.log(state);
-
-            // this.setState({
-            //     list: state
-            // });
-        });
-    }
-
     add(e) {
         e.preventDefault();
-       const dbScores = firebase.database().ref(`/${this.props.userID}/Ability Scores`)
-       dbScores.push(e.target.value);
-       console.log(dbScores);
+        const newTotals = {
+            str: this.state.str,
+            dex: this.state.dex,
+            con: this.state.con,
+            intel: this.state.intel,
+            wis: this.state.wis,
+            cha: this.state.cha,
+            list: []
+        }
+        const newState = Array.from(this.state.list);
+        newState.push(newTotals);
+
+        this.setState({
+            list: newState,
+            // str: "",
+            // dex: "",
+            // con: "",
+            // intel: "",
+            // wis: "",
+            // cha: ""
+        });
+       const dbScores = firebase.database().ref(`/${this.props.userID}/AbilityScores`)
+       dbScores.push(newTotals);
+    //    console.log(dbScores);
     }
     render() {
         return (
@@ -94,10 +79,25 @@ class AbilityScores extends React.Component {
                     <div className="abilityScores">
                         <label htmlFor="str">Strength</label>
                         <input id="str" type="number" onChange={this.abScore} />
-                        <p>{this.modify(this.state.str)}</p>
+                        {this.state.list.map((item, i) => {
+                            return (<h3 key={i}>{item.str}</h3>)
+                        })}
+                        {this.state.list.map((item, i) => {
+                            return (
+                                <p key={i}>{this.modify(item.str)}</p>
+                            )
+                        })}
+
+
+                        {/* <p>{this.state.list.map((item,i) => {
+                            this.modify(item.str)
+                        })}</p> */}
 
                         <label htmlFor="dex">Dexterity</label>
                         <input id="dex" type="number" onChange={this.abScore} />
+                        {this.state.list.map((item, i) => {
+                            return (<h3 key={i}>{item.dex}</h3>)
+                        })}
                         <p>{this.modify(this.state.dex)}</p>
 
                         <label htmlFor="con">Constitution</label>
