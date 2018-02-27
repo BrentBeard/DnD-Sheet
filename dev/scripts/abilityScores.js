@@ -4,15 +4,42 @@ class AbilityScores extends React.Component {
     constructor() {
         super();
         this.state = {
-            str: 10,
-            dex: 10,
-            con: 10,
-            intel: 10,
-            wis: 10,
-            cha: 10
+            str: 0,
+            dex: 0,
+            con: 0,
+            intel: 0,
+            wis: 0,
+            cha: 0
         }
         console.log(this.state);
-        this.abScore = this.abScore.bind(this)
+        this.abScore = this.abScore.bind(this);
+        this.add = this.add.bind(this);
+    }
+    componentDidMount() {
+        const dbref = firebase.database().ref(`/${this.props.userID}/Languages`);
+
+        dbref.on('value', (snapshot) => {
+            // console.log(snapshot.val());
+            const data = snapshot.val();
+            const state = [];
+            // console.log(data);
+            for (let key in data) {
+                // console.log(data.key);
+                // console.log(data[key]);
+                // Ki ki's key exchange
+                // Here we use the value stored in the key
+                // variable to access the object stored at that location.
+                //Then we add a new property to that object, called key(confusing right?)
+                //And assign it the value of, key.
+                // data[key].key = key;
+                state.push(data[key]);
+            }
+            // console.log(state);
+
+            this.setState({
+                list: state
+            });
+        });
     }
     abScore(e) {
         //take number value of input. divide that input by 2 and subtract 5 render that value in the p tag 
@@ -26,10 +53,44 @@ class AbilityScores extends React.Component {
         let modScore = Math.floor(newScore);
         return modScore
     }
+
+    componentDidMount() {
+        const dbref = firebase.database().ref(`/${this.props.userID}/Ability Scores`);
+
+        dbref.on('value', (snapshot) => {
+            // console.log(snapshot.val());
+            const data = snapshot.val();
+            const state = [];
+            // console.log(data);
+            for (let key in data) {
+                // console.log(data.key);
+                // console.log(data[key]);
+                // Ki ki's key exchange
+                // Here we use the value stored in the key
+                // variable to access the object stored at that location.
+                //Then we add a new property to that object, called key(confusing right?)
+                //And assign it the value of, key.
+                // data[key].key = key;
+                state.push(data[key]);
+            }
+            // console.log(state);
+
+            // this.setState({
+            //     list: state
+            // });
+        });
+    }
+
+    add(e) {
+        e.preventDefault();
+       const dbScores = firebase.database().ref(`/${this.props.userID}/Ability Scores`)
+       dbScores.push(e.target.value);
+       console.log(dbScores);
+    }
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.add} >
                     <div className="abilityScores">
                         <label htmlFor="str">Strength</label>
                         <input id="str" type="number" onChange={this.abScore} />
@@ -54,6 +115,7 @@ class AbilityScores extends React.Component {
                         <label htmlFor="cha">Charisma</label>
                         <input id="cha" type="number" onChange={this.abScore} />
                         <p>{this.modify(this.state.cha)}</p>
+                        <input type="submit" value="submit"/>
                     </div>
                     <div className="saveThrows">
                         <h2>Savings Throws</h2>

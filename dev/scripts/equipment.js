@@ -15,6 +15,26 @@ class Equipment extends React.Component {
     this.toggleChange = this.toggleChange.bind(this);
     }
 
+    componentDidMount() {
+        const dbref = firebase.database().ref(`/${this.props.userID}/Equipment`);
+
+        dbref.on('value', (snapshot) => {
+
+            const data = snapshot.val();
+            const state = [];
+
+            for (let key in data) {
+
+                state.push(data[key]);
+            }
+            // console.log(state);
+
+            this.setState({
+                list: state
+            });
+        });
+    }
+
     addList(e) {
         e.preventDefault();
         const newValue = this.state.listItem
@@ -27,6 +47,9 @@ class Equipment extends React.Component {
 
         let newArray = this.state.list
         newArray.push(newItem)
+
+        const dbEquip = firebase.database().ref(`/${this.props.userID}/Equipment/`)
+        dbEquip.push(newItem);
 
         this.setState({
             list: newArray,

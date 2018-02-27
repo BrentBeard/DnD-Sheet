@@ -13,6 +13,25 @@ class Weapons extends React.Component {
         this.addList = this.addList.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
+    componentDidMount() {
+        const dbref = firebase.database().ref(`/${this.props.userID}/Weapons`);
+
+        dbref.on('value', (snapshot) => {
+
+            const data = snapshot.val();
+            const state = [];
+
+            for (let key in data) {
+
+                state.push(data[key]);
+            }
+
+
+            this.setState({
+                list: state
+            });
+        });
+    }
     addList(e) {
         e.preventDefault();
         const listNew = {
@@ -29,6 +48,8 @@ class Weapons extends React.Component {
             atkBonus: "",
             dType: ""
         });
+        const dbWeapons = firebase.database().ref(`/${this.props.userID}/Weapons`)
+        dbWeapons.push(listNew)
         console.log(this.state.list);
     }
     handleChange(e) {

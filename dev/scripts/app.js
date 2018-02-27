@@ -24,9 +24,9 @@ class App extends React.Component {
     this.state = {
       loggedIn: false,
       user: {},
-      userText: ''
     }
     this.goodbye = this.goodbye.bind(this);
+    const dbRef = firebase.database().ref(`/${this.state.user.uid}`)
   }
 
   componentDidMount() {
@@ -70,6 +70,7 @@ class App extends React.Component {
     })
   }
 
+
     render() {
       return (
           <div>
@@ -77,18 +78,14 @@ class App extends React.Component {
             <div>
               <div>
                 <h2>Welcome, {this.state.user.displayName}</h2>
-                <form onSubmit={this.addText}>
-                  <input id="userText" onChange={this.handleChange} type="text" value={this.state.userText} />
-                  <input type="submit" />
-                </form>
                 <button onClick={this.goodbye}>Sign out!</button>
               </div>
-              <AbilityScores />
-              <Equipment />
-              <HealthAndSpeed />
-              <Languages />
-              <Background />
-              <Weapons />
+              <AbilityScores userID={this.state.user.uid} />
+              <Equipment userID={this.state.user.uid}/>
+              <HealthAndSpeed userID={this.state.user.uid}/>
+              <Languages userID={this.state.user.uid}/>
+              <Background userID={this.state.user.uid}/>
+              <Weapons userID={this.state.user.uid}/>
             </div>
              :
             <div>

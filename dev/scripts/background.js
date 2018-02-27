@@ -11,19 +11,30 @@ class Background extends React.Component {
         this.addList = this.addList.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
+    componentDidMount() {
+        const dbref = firebase.database().ref(`/${this.props.userID}/Background`);
+
+        dbref.on('value', (snapshot) => {
+            const data = snapshot.val();
+            const state = [];
+            for (let key in data) {
+
+                state.push(data[key]);
+            }
+            this.setState({
+                list: state
+            });
+        });
+    }
     addList(e) {
         e.preventDefault();
-        const listNew = {
-            listItems: this.state.listItem
-        };
-        // console.log(listNew)
-        const newState = Array.from(this.state.list);
-        newState.push(this.state.listItem);
+
+        const dbBack = firebase.database().ref(`/${this.props.userID}/Background`)
+        dbBack.push(this.state.listItem);
+
         this.setState({
-            list: newState,
             listItem: ""
         });
-        console.log(this.state.list);
     }
     handleChange(e) {
         this.setState({
