@@ -6,6 +6,7 @@ import Background from './background.js';
 import Weapons from './weapons.js';
 import HealthAndSpeed from './healthAndSpeedBox.js'
 import AbilityScores from './abilityScores.js'
+import Name from './name.js'
 
 var config = {
   apiKey: "AIzaSyBk3culam82m0j9_ToifzRLFszPs7rOSz8",
@@ -80,6 +81,7 @@ class App extends React.Component {
                 <h2>Welcome, {this.state.user.displayName}</h2>
                 <button onClick={this.goodbye}>Sign out!</button>
               </div>
+              <Name userID={this.state.user.uid} />
               <AbilityScores userID={this.state.user.uid} />
               <Equipment userID={this.state.user.uid}/>
               <HealthAndSpeed userID={this.state.user.uid}/>

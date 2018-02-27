@@ -13,6 +13,7 @@ class Weapons extends React.Component {
         this.addList = this.addList.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
+    
     componentDidMount() {
         const dbref = firebase.database().ref(`/${this.props.userID}/Weapons`);
 
