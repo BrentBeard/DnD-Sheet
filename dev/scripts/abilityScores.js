@@ -74,72 +74,73 @@ class AbilityScores extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="abScoreBox">
+            <label className="boxButton" htmlFor="showBox"><input id="showBox" type="checkbox"/></label>
                 <form onSubmit={this.add} >
                     <div className="abilityScores">
                         <label htmlFor="str">Strength</label>
                         <input id="str" type="number" onChange={this.abScore} />
                         {this.state.list.map((item, i) => {
-                            return (<h3 key={i}>{item.str}</h3>)
+                            return (<h2 key={i}>{item.str}</h2>)
                         })}
                         {this.state.list.map((item, i) => {
                             return (
-                                <p key={i}>{this.modify(item.str)}</p>
+                                <h3 key={i}>{this.modify(item.str)}</h3>
                             )
                         })}
 
                         <label htmlFor="dex">Dexterity</label>
                         <input id="dex" type="number" onChange={this.abScore} />
                         {this.state.list.map((item, i) => {
-                            return (<h3 key={i}>{item.dex}</h3>)
+                            return (<h2 key={i}>{item.dex}</h2>)
                         })}
                         {this.state.list.map((item, i) => {
                             return (
-                                <p key={i}>{this.modify(item.dex)}</p>
+                                <h3 key={i}>{this.modify(item.dex)}</h3>
                             )
                         })}
 
                         <label htmlFor="con">Constitution</label>
                         <input id="con" type="number" onChange={this.abScore} />
                         {this.state.list.map((item, i) => {
-                            return (<h3 key={i}>{item.con}</h3>)
+                            return (<h2 key={i}>{item.con}</h2>)
                         })}
                         {this.state.list.map((item, i) => {
                             return (
-                                <p key={i}>{this.modify(item.con)}</p>
+                                <h3 key={i}>{this.modify(item.con)}</h3>
                             )
                         })}
 
                         <label htmlFor="intel">Intelligence</label>
                         <input id="intel" type="number" onChange={this.abScore} />
                         {this.state.list.map((item, i) => {
-                            return (<h3 key={i}>{item.intel}</h3>)
+                            return (<h2 key={i}>{item.intel}</h2>)
                         })}
                         {this.state.list.map((item, i) => {
                             return (
-                                <p key={i}>{this.modify(item.intel)}</p>
+                                <h3 key={i}>{this.modify(item.intel)}</h3>
                             )
                         })}
 
                         <label htmlFor="wis">Wisdom</label>
                         <input id="wis" type="number" onChange={this.abScore} />
                         {this.state.list.map((item, i) => {
-                            return (<h3 key={i}>{item.wis}</h3>)
+                            return (<h2 key={i}>{item.wis}</h2>)
                         })}
                         {this.state.list.map((item, i) => {
                             return (
-                                <p key={i}>{this.modify(item.wis)}</p>
+                                <h3 key={i}>{this.modify(item.wis)}</h3>
                             )
                         })}
 
                         <label htmlFor="cha">Charisma</label>
                         <input id="cha" type="number" onChange={this.abScore} />
                         {this.state.list.map((item, i) => {
-                            return (<h3 key={i}>{item.cha}</h3>)
+                            return (<h2 key={i}>{item.cha}</h2>)
                         })}
                         {this.state.list.map((item, i) => {
                             return (
-                                <p key={i}>{this.modify(item.cha)}</p>
+                                <h3 key={i}>{this.modify(item.cha)}</h3>
                             )
                         })}
 
@@ -247,7 +248,7 @@ class AbilityScores extends React.Component {
                         })} Survival<span>(Wis)</span></p>
                     </div>
                     <div>
-                        <p><label htmlFor="pasWis"><input id="pasWis" type="checkbox" /></label>{this.state.list.map((item, i) => {
+                        <p>{this.state.list.map((item, i) => {
                             return this.modify(item.wis)
                         })} Passive Wisdom<span>(Perception)</span></p>
                     </div>

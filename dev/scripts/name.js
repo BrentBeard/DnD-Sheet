@@ -61,12 +61,25 @@ class Name extends React.Component {
         const dbName = firebase.database().ref(`/${this.props.userID}/Name`);
         dbName.push(listNew);
 
+        document.getElementById("#nameForm").classList.add("myclass");
+
     }
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.addList}>
+            <div className="nameBox">
+                {this.state.list.map((item, i) => {
+                    return (
+                        <div key={i}>
+                            <p>{item.name}</p>
+                            <p>{item.class}</p>
+                            <p>{item.race}</p>
+                            <p>{item.align}</p>
+                            <p>{item.background}</p>
+                        </div>
+                    )
+                })}  
+                <form id="nameForm" className="nameForm" onSubmit={this.addList}>
                     <label htmlFor="name">Name:</label>
                     <input type="text" id="name"
                         value={this.state.name}
@@ -86,18 +99,7 @@ class Name extends React.Component {
                     
                     <input type="submit" value="submit" />
                 </form>
-                
-                    {this.state.list.map((item, i) => {
-                        return (
-                            <div key={i}>
-                            <p>{item.name}</p>
-                            <p>{item.class}</p>
-                            <p>{item.race}</p>
-                            <p>{item.align}</p>
-                            <p>{item.background}</p>
-                            </div>
-                        )
-                    })}   
+             
             </div>
         )
     }

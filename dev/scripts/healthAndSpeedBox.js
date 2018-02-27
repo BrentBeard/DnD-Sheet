@@ -95,7 +95,6 @@ class HealthAndSpeed extends React.Component {
                     {this.state.list.map((item, i) => {
                         return (<p key={i}>{item.hp}</p>)
                     })}
-
                         <input type="submit" value="submit"/>
                     </form>
                     <ul>

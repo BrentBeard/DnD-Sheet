@@ -78,7 +78,7 @@ class App extends React.Component {
           {this.state.loggedIn === true ?
             <div>
               <div>
-                <h2>Welcome, {this.state.user.displayName}</h2>
+                <h1>Adventure on, {this.state.user.displayName}</h1>
                 <button onClick={this.goodbye}>Sign out!</button>
               </div>
               <Name userID={this.state.user.uid} />
@@ -90,9 +90,9 @@ class App extends React.Component {
               <Weapons userID={this.state.user.uid}/>
             </div>
              :
-            <div>
+            <div className="welcomeBox">
               <h2>Welcome Please sign in</h2>
-              <button onClick={this.signIn}>Sign in with Google</button>
+              <button className="signOutButton" onClick={this.signIn}>Sign in with Google</button>
             </div>
           }
             

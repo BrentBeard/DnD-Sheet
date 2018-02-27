@@ -13,7 +13,7 @@ class Weapons extends React.Component {
         this.addList = this.addList.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-    
+
     componentDidMount() {
         const dbref = firebase.database().ref(`/${this.props.userID}/Weapons`);
 
@@ -60,8 +60,17 @@ class Weapons extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="weaponsBox">
                 <h2>Attacks</h2>
+                <ul>
+                    {this.state.list.map((listFinal, i) => {
+                        return (
+                            <li key={i}>
+                                <p><span>{listFinal.listItems}</span><span>Bonus: {listFinal.atkBonus}</span><span>{listFinal.dType}</span></p>
+                            </li>
+                        )
+                    })}
+                </ul>
                 <form onSubmit={this.addList}>
                     <label htmlFor="listItem">Weapon:</label>
                     <input type="text" id="listItem"
@@ -73,15 +82,6 @@ class Weapons extends React.Component {
                         <input id="dType" type="text" value={this.state.dType} onChange={this.handleChange}/>
                     <input type="submit" value="submit" />
                 </form>
-                <ul>
-                    {this.state.list.map((listFinal, i) => {
-                        return (
-                            <li key={i}>
-                                <p><span>{listFinal.listItems}</span><span>{listFinal.atkBonus}</span><span>{listFinal.dType}</span></p>
-                            </li>
-                        )
-                    })}
-                </ul>
             </div>
         )
     }

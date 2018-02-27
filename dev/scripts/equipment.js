@@ -72,25 +72,17 @@ class Equipment extends React.Component {
     
     render() {
         return (
-            <div>
+            <div className="equipBox">
                 <h2>Equipment & Treasure</h2>
-                <form onSubmit={this.addList}>
-                    <input type="text" id="listItem" 
-                    value={this.state.listItem}
-                    onChange={this.handleChange} />
-                    <label htmlFor="counter">Counter?
-                    <input type="checkbox" id="counter" checked={this.state.counter} onChange={this.toggleChange} /></label>
-                    <input type="submit" value="submit"/>
-                </form>
                 <ul>
                     {this.state.list.map((item, i) => {
-                        if(item.counter === true){
+                        if (item.counter === true) {
                             return (
                                 <li key={i}>
-                                    <p>{item.value} <input type="number"/></p>
+                                    <p>{item.value} <input type="number" /></p>
                                 </li>
                             )
-                        } else{
+                        } else {
                             return (
                                 <li key={i}>
                                     <p>{item.value}</p>
@@ -99,6 +91,14 @@ class Equipment extends React.Component {
                         }
                     })}
                 </ul>
+                <form onSubmit={this.addList}>
+                    <input type="text" id="listItem" 
+                    value={this.state.listItem}
+                    onChange={this.handleChange} />
+                    <label htmlFor="counter">Counter?
+                    <input type="checkbox" id="counter" checked={this.state.counter} onChange={this.toggleChange} /></label>
+                    <input type="submit" value="submit"/>
+                </form>
             </div>
         )
     }

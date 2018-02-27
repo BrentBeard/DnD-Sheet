@@ -44,7 +44,14 @@ class Background extends React.Component {
     render() {
         return (
             <div>
-                <h2>Background</h2>
+                <h2>Write your story</h2>
+                <div className="box">
+                    {this.state.list.map((listFinal, i) => {
+                        return (
+                            <p key={i}>{listFinal}</p>
+                        )
+                    })}
+                </div>
                 <form onSubmit={this.addList}>
                     {/* <input type="text" id="listItem"
                         value={this.state.listItem}
@@ -52,13 +59,7 @@ class Background extends React.Component {
                     <textarea name="text1" id="listItem" cols="40" rows="5" value={this.state.listItem} onChange={this.handleChange}></textarea>
                     <input type="submit" value="submit" />
                 </form>
-                <div>
-                    {this.state.list.map((listFinal, i) => {
-                        return (
-                                <p key={i}>{listFinal}</p>
-                        )
-                    })}
-                </div>
+                
             </div>
         )
     }

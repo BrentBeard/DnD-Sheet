@@ -66,7 +66,7 @@ class Languages extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="langBox">
                 <h2>Languages & Proficiencies</h2>
                 <form onSubmit={this.addList}>
                     <input type="text" id="listItem"
